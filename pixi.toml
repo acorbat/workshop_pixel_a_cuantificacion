@@ -1,0 +1,73 @@
+[workspace]
+name = "workshop_pixel_a_cuantificacion"
+version = "0.1.0"
+description = "Taller introductorio a análisis de bioimágenes con segmentación 3D en Napari"
+authors = ["Agustin Corbat <acorbat.bia@gmail.com>"]
+channels = ["conda-forge"]
+platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
+
+[feature.cellpose.system-requirements]
+cuda = "12.0"
+
+[feature.cellpose.target.win.dependencies]
+pytorch-gpu = ">=2.9.1,<3"
+
+[feature.cellpose.target.linux.dependencies]
+pytorch-gpu = ">=2.9.1,<3"
+
+[feature.cellpose.target.win-64.pypi-dependencies]
+tensorflow = ">=2.13,<3"
+
+[feature.cellpose.dependencies]
+python = "3.11.*"
+napari = ">=0.6.6,<0.7"
+cellpose = "*"
+stardist = "*"
+bioio = "*"
+jupyterlab = ">=4.5.1,<5"
+
+[feature.assistant.dependencies]
+python = "3.10.*"
+
+napari = "0.6.*"
+napari-assistant = "0.6.*"
+
+# procesamiento con scikit-image
+scikit-image = "*"
+numpy = "*"
+scipy = "*"
+
+# herramientas de segmentación compatibles con el asistente
+napari-segment-blobs-and-things-with-membranes = "*"
+
+# regionprops (medición)
+napari-skimage-regionprops = "*"
+
+# backend GUI
+pyqt = "*"
+qtpy = "*"
+magicgui = "*"
+jupytext = ">=1.19.1,<2"
+jupyterlab = ">=4.5.4,<5"
+
+
+[environments]
+assistant = ["assistant"]
+cellpose = ["cellpose"]
+
+[feature.assistant.tasks]
+assistant = "naparia"
+napari = "python -m napari"
+reset = "napari --reset"
+
+[feature.cellpose.pypi-dependencies]
+bioio-tifffile = "*"
+
+[feature.cellpose.tasks]
+cellpose = "jupyter lab notebooks/cellpose_napari_3d.ipynb"
+
+[tasks]
+descargar-datos = """
+curl -L https://zenodo.org/records/17986091/files/Lund.tif --output data/Lund.tif --create-dirs &&
+curl -L https://git.mpi-cbg.de/rhaase/clij2_example_data/-/raw/master/lund1051_resampled.tif --output data/lund1051_resampled.tif --create-dirs
+"""
