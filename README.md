@@ -1,19 +1,19 @@
-# workshop_pixel_a_cuantificacion
+# Workshop: Píxel a cuantificación
 
-Bienvenido al taller de Análisis de Bioimágenes. En este taller de 4 horas aprenderás a realizar segmentación y cuantificación de imágenes 3D utilizando Napari, CellPose y herramientas de análisis de imágenes basadas en Python.
+Bienvenido al taller de Análisis de Bioimágenes: Píxel a cuantificación. En este taller de 2 horas aprenderás a realizar segmentación y cuantificación de imágenes 3D utilizando Napari y herramientas de análisis de imágenes basadas en Python.
 
 ## Descripción del taller
 
-El taller se divide en dos secciones, cada una comenzando con una clase teórica:
+El taller se divide en dos secciones, cada una con una parte teórica:
 
 ### Sección 1: Fundamentos de Segmentación (2 horas)
-- **Clase teórica** (30 minutos): Principios de segmentación de imágenes, métodos de umbralización y operaciones morfológicas
+- **Clase teórica**: Principios de segmentación de imágenes, métodos de umbralización y operaciones morfológicas
 - **Práctica: Segmentación con Napari** (90 minutos): Segmentación interactiva usando Napari con el asistente de segmentación
   - Ver [Guía de Segmentación en Napari](./segmentation_napari.md) para instrucciones detalladas
 
-### Sección 2: Métodos Avanzados de Segmentación (2 horas)
-- **Clase teórica** (30 minutos): Segmentación basada en aprendizaje profundo y descripción general de CellPose
-- **Práctica: Segmentación con CellPose** (90 minutos): Aplicación práctica de CellPose para segmentación celular automatizada
+### Sección 2: Métodos Avanzados de Segmentación (extra pára poder seguir desde casa)
+- **Clase teórica**: Segmentación basada en aprendizaje profundo y descripción general de CellPose
+- **Práctica: Segmentación con CellPose**: Aplicación práctica de CellPose para segmentación celular automatizada
   - Ver [Guía de Segmentación con CellPose](./segmentation_cellpose.md) para instrucciones detalladas
 
 ## Material de las clases
@@ -24,20 +24,26 @@ Descargá las diapositivas de la presentación y recursos adicionales desde **[Z
 
 ### Requisitos previos
 
-Instalá [Pixi](https://pixi.sh/) — un gestor de paquetes para entornos Python.
+Instalá [Pixi](https://pixi.sh/) — un gestor de paquetes para entornos Python entre otros.
 
-### Instalación
+### Instalación y descargar datos
 
 1. Cloná o descargá este repositorio
-2. Abrí una terminal en el directorio del repositorio
+2. Abrí una terminal en el directorio del repositorio (shift + click derecho > Abrir terminal aquí)
 3. Instalá el entorno:
    ```bash
    pixi install --all
+   pixi run descargar-datos
    ```
 
-### Descarga de datos
+*Nota:* Si no pudiste descargar los datos, abajo se encuentra el link.
 
-Descargá el conjunto de datos con `pixi run descargar-datos`.
+## Datos de ejemplo
+
+Descargá las imágenes de ejemplo desde Zenodo:
+- **Imagen 3D**: `Lund.tif` - Pila 3D completa para este taller
+
+https://zenodo.org/records/17986091
 
 ## Ejecutar el taller
 
@@ -48,13 +54,6 @@ pixi run assistant
 ```
 
 Esto abre Napari con el panel del asistente de segmentación que te guía a través del flujo de trabajo.
-
-## Datos de ejemplo
-
-Descargá las imágenes de ejemplo desde Zenodo:
-- **Imagen 3D**: `Lund.tif` - Pila 3D completa para este taller
-
-https://zenodo.org/records/17986091
 
 ## Consejos y trucos
 
