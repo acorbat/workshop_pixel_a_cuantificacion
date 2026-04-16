@@ -67,7 +67,7 @@ bioio-tifffile = "*"
 cellpose = "jupyter lab notebooks/cellpose_napari_3d.ipynb"
 
 [tasks]
-descargar-datos = """
+download-data = """
 curl -L https://zenodo.org/records/17986091/files/Lund.tif --output data/Lund.tif --create-dirs &&
 curl -L https://git.mpi-cbg.de/rhaase/clij2_example_data/-/raw/master/lund1051_resampled.tif --output data/lund1051_resampled.tif --create-dirs
 """
