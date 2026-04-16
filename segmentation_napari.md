@@ -62,7 +62,7 @@ Requisitos:
 - Todo lo necesario está en el archivo toml en la carpeta Pixi/napari-assistant https://github.com/cuenca-mb/pixi-napari-assistant
 
 ### 0. Abrir el asistente de Napari con Pixi
-En la terminal, ve al directorio Pixi/napari-assistant y ejecutá:
+En la terminal, ve al directorio `.../workshop_pixel_a_cuantificacion` y ejecutá:
 
 `pixi run assistant`
 
