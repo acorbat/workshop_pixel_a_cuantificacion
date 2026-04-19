@@ -30,13 +30,14 @@ Instalá [Pixi](https://pixi.sh/) — un gestor de paquetes para entornos Python
 
 1. Cloná o descargá este repositorio
 2. Abrí una terminal en el directorio del repositorio (shift + click derecho > Abrir terminal aquí)
-3. Instalá el entorno:
+3. Ejecutá el siguiente comando:
    ```bash
-   pixi install --all
-   pixi run descargar-datos
+   pixi run setup
    ```
 
-*Nota:* Si no pudiste descargar los datos, abajo se encuentra el link.
+Esto instalará automáticamente los entornos necesarios (detectando si tenés GPU disponible) y descargará los datos de ejemplo.
+
+*Nota:* Si el paso de descarga de datos falla, podés descargar los archivos manualmente desde **[Zenodo](https://zenodo.org/records/17986091)** y colocarlos en la carpeta `data/`.
 
 ## Datos de ejemplo
 
