@@ -26,6 +26,24 @@ stardist = "*"
 bioio = "*"
 jupyterlab = ">=4.5.1,<5"
 
+[feature.cellpose-cpu.dependencies]
+python = "3.11.*"
+napari = ">=0.6.6,<0.7"
+cellpose = "*"
+stardist = "*"
+bioio = "*"
+jupyterlab = ">=4.5.1,<5"
+pytorch = ">=2.9.1,<3"
+
+[feature.cellpose-cpu.target.win-64.pypi-dependencies]
+tensorflow = ">=2.13,<3"
+
+[feature.cellpose-cpu.pypi-dependencies]
+bioio-tifffile = "*"
+
+[feature.cellpose-cpu.tasks]
+cellpose = "jupyter lab notebooks/cellpose_napari_3d.ipynb"
+
 [feature.assistant.dependencies]
 python = "3.10.*"
 
@@ -54,6 +72,7 @@ jupyterlab = ">=4.5.4,<5"
 [environments]
 assistant = ["assistant"]
 cellpose = ["cellpose"]
+cellpose-cpu = ["cellpose-cpu"]
 
 [feature.assistant.tasks]
 assistant = "naparia"
@@ -71,3 +90,4 @@ download-data = """
 curl -L https://zenodo.org/records/17986091/files/Lund.tif --output data/Lund.tif --create-dirs &&
 curl -L https://git.mpi-cbg.de/rhaase/clij2_example_data/-/raw/master/lund1051_resampled.tif --output data/lund1051_resampled.tif --create-dirs
 """
+setup = "python scripts/setup.py"
