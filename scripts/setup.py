@@ -68,6 +68,30 @@ def run_command(cmd, description):
         sys.exit(1)
 
 
+def check_data_files():
+    """
+    Check if data files are already downloaded.
+    
+    Returns:
+        bool: True if all data files exist, False otherwise
+    """
+    data_dir = Path("data")
+    required_files = [
+        data_dir / "Lund.tif",
+        data_dir / "lund1051_resampled.tif"
+    ]
+    
+    all_exist = all(file.exists() for file in required_files)
+    
+    if all_exist:
+        print("✅ Data files already downloaded")
+        return True
+    
+    missing = [file for file in required_files if not file.exists()]
+    print(f"📥 Missing data files: {', '.join(file.name for file in missing)}")
+    return False
+
+
 def main():
     """Main setup function."""
     print("=" * 60)
@@ -89,11 +113,13 @@ def main():
         f"Installing cellpose environment ({cellpose_feature})"
     )
     
-    # Step 3: Download data
-    run_command(
-        ["pixi", "run", "download-data"],
-        "Downloading data files"
-    )
+    # Step 3: Check if data needs to be downloaded
+    print("\n📁 Checking data files...")
+    if not check_data_files():
+        run_command(
+            ["pixi", "run", "download-data"],
+            "Downloading data files"
+        )
     
     print("\n" + "=" * 60)
     print("✅ Setup completed successfully!")
