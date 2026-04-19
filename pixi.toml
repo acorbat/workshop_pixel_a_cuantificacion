@@ -30,7 +30,6 @@ jupyterlab = ">=4.5.1,<5"
 python = "3.11.*"
 napari = ">=0.6.6,<0.7"
 cellpose = "*"
-stardist = "*"
 bioio = "*"
 jupyterlab = ">=4.5.1,<5"
 pytorch = ">=2.9.1,<3"
@@ -86,8 +85,21 @@ bioio-tifffile = "*"
 cellpose = "jupyter lab notebooks/cellpose_napari_3d.ipynb"
 
 [tasks]
+install-assistant = "pixi install --environment assistant"
+setup = { depends-on = ["install-assistant", "install-cellpose", "download-data"] }
 download-data = """
 curl -L https://zenodo.org/records/17986091/files/Lund.tif --output data/Lund.tif --create-dirs &&
 curl -L https://git.mpi-cbg.de/rhaase/clij2_example_data/-/raw/master/lund1051_resampled.tif --output data/lund1051_resampled.tif --create-dirs
 """
-setup = "python scripts/setup.py"
+
+[target.win-64.tasks]
+install-cellpose = "powershell -Command \"if (Get-Command nvidia-smi -ErrorAction SilentlyContinue) { pixi install --environment cellpose } else { pixi install --environment cellpose-cpu }\""
+
+[target.linux-64.tasks]
+install-cellpose = "bash -c 'nvidia-smi > /dev/null 2>&1 && pixi install --environment cellpose || pixi install --environment cellpose-cpu'"
+
+[target.osx-64.tasks]
+install-cellpose = "pixi install --environment cellpose"
+
+[target.osx-arm64.tasks]
+install-cellpose = "pixi install --environment cellpose"
